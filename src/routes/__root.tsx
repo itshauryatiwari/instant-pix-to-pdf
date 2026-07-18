@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Convert, merge, split, compress and organize PDFs in your browser. No uploads, no watermarks, no sign-up — just fast, private PDF tools.",
+          "Convert, merge, split, compress and organize PDFs directly in your browser. No uploads, no watermarks, no sign-up required.",
       },
       { name: "author", content: "PDFMaker" },
       { name: "theme-color", content: "#2563EB" },
@@ -99,15 +99,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Convert, merge, split, compress and organize PDFs in your browser. No uploads, no watermarks, no sign-up — just fast, private PDF tools.",
+          "Convert, merge, split, compress and organize PDFs directly in your browser. No uploads, no watermarks, no sign-up required.",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "PDFMaker — Free Browser-Based PDF Tools" },
       {
         name: "twitter:description",
         content:
-          "Convert, merge, split, compress and organize PDFs in your browser.",
+          "Convert, merge, split, compress and organize PDFs directly in your browser. No uploads, no watermarks, no sign-up required.",
       },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0395e9cc-0e73-439d-aaaf-d61cbee3adcc/id-preview-96531e50--c726ca5a-8c5f-4f5e-93a9-c0d5baa65221.lovable.app-1784376203121.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0395e9cc-0e73-439d-aaaf-d61cbee3adcc/id-preview-96531e50--c726ca5a-8c5f-4f5e-93a9-c0d5baa65221.lovable.app-1784376203121.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
