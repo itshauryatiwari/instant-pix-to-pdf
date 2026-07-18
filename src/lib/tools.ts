@@ -20,8 +20,10 @@ import {
   ScanText,
   Hash,
   ListOrdered,
+  FileOutput,
   type LucideIcon,
 } from "lucide-react";
+
 
 export type Tool = {
   slug: string;
