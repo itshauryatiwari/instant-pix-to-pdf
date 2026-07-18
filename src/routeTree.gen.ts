@@ -12,11 +12,17 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsWatermarkPdfRouteImport } from './routes/tools.watermark-pdf'
+import { Route as ToolsUnlockPdfRouteImport } from './routes/tools.unlock-pdf'
 import { Route as ToolsSplitPdfRouteImport } from './routes/tools.split-pdf'
 import { Route as ToolsRotatePdfRouteImport } from './routes/tools.rotate-pdf'
+import { Route as ToolsProtectPdfRouteImport } from './routes/tools.protect-pdf'
 import { Route as ToolsPdfToImageRouteImport } from './routes/tools.pdf-to-image'
+import { Route as ToolsOrganizePdfRouteImport } from './routes/tools.organize-pdf'
 import { Route as ToolsMergePdfRouteImport } from './routes/tools.merge-pdf'
 import { Route as ToolsImageToPdfRouteImport } from './routes/tools.image-to-pdf'
+import { Route as ToolsExtractPagesRouteImport } from './routes/tools.extract-pages'
+import { Route as ToolsDeletePagesRouteImport } from './routes/tools.delete-pages'
 import { Route as ToolsCompressPdfRouteImport } from './routes/tools.compress-pdf'
 import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
@@ -35,6 +41,16 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsWatermarkPdfRoute = ToolsWatermarkPdfRouteImport.update({
+  id: '/tools/watermark-pdf',
+  path: '/tools/watermark-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsUnlockPdfRoute = ToolsUnlockPdfRouteImport.update({
+  id: '/tools/unlock-pdf',
+  path: '/tools/unlock-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsSplitPdfRoute = ToolsSplitPdfRouteImport.update({
   id: '/tools/split-pdf',
   path: '/tools/split-pdf',
@@ -45,9 +61,19 @@ const ToolsRotatePdfRoute = ToolsRotatePdfRouteImport.update({
   path: '/tools/rotate-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsProtectPdfRoute = ToolsProtectPdfRouteImport.update({
+  id: '/tools/protect-pdf',
+  path: '/tools/protect-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsPdfToImageRoute = ToolsPdfToImageRouteImport.update({
   id: '/tools/pdf-to-image',
   path: '/tools/pdf-to-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsOrganizePdfRoute = ToolsOrganizePdfRouteImport.update({
+  id: '/tools/organize-pdf',
+  path: '/tools/organize-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsMergePdfRoute = ToolsMergePdfRouteImport.update({
@@ -58,6 +84,16 @@ const ToolsMergePdfRoute = ToolsMergePdfRouteImport.update({
 const ToolsImageToPdfRoute = ToolsImageToPdfRouteImport.update({
   id: '/tools/image-to-pdf',
   path: '/tools/image-to-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsExtractPagesRoute = ToolsExtractPagesRouteImport.update({
+  id: '/tools/extract-pages',
+  path: '/tools/extract-pages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsDeletePagesRoute = ToolsDeletePagesRouteImport.update({
+  id: '/tools/delete-pages',
+  path: '/tools/delete-pages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsCompressPdfRoute = ToolsCompressPdfRouteImport.update({
@@ -76,11 +112,17 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
+  '/tools/extract-pages': typeof ToolsExtractPagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/organize-pdf': typeof ToolsOrganizePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/protect-pdf': typeof ToolsProtectPdfRoute
   '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
   '/tools/split-pdf': typeof ToolsSplitPdfRoute
+  '/tools/unlock-pdf': typeof ToolsUnlockPdfRoute
+  '/tools/watermark-pdf': typeof ToolsWatermarkPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -88,11 +130,17 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
+  '/tools/extract-pages': typeof ToolsExtractPagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/organize-pdf': typeof ToolsOrganizePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/protect-pdf': typeof ToolsProtectPdfRoute
   '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
   '/tools/split-pdf': typeof ToolsSplitPdfRoute
+  '/tools/unlock-pdf': typeof ToolsUnlockPdfRoute
+  '/tools/watermark-pdf': typeof ToolsWatermarkPdfRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
@@ -101,11 +149,17 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
+  '/tools/extract-pages': typeof ToolsExtractPagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/organize-pdf': typeof ToolsOrganizePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/protect-pdf': typeof ToolsProtectPdfRoute
   '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
   '/tools/split-pdf': typeof ToolsSplitPdfRoute
+  '/tools/unlock-pdf': typeof ToolsUnlockPdfRoute
+  '/tools/watermark-pdf': typeof ToolsWatermarkPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
@@ -115,11 +169,17 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
+    | '/tools/extract-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/organize-pdf'
     | '/tools/pdf-to-image'
+    | '/tools/protect-pdf'
     | '/tools/rotate-pdf'
     | '/tools/split-pdf'
+    | '/tools/unlock-pdf'
+    | '/tools/watermark-pdf'
     | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -127,11 +187,17 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
+    | '/tools/extract-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/organize-pdf'
     | '/tools/pdf-to-image'
+    | '/tools/protect-pdf'
     | '/tools/rotate-pdf'
     | '/tools/split-pdf'
+    | '/tools/unlock-pdf'
+    | '/tools/watermark-pdf'
     | '/tools'
   id:
     | '__root__'
@@ -139,11 +205,17 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
+    | '/tools/extract-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/organize-pdf'
     | '/tools/pdf-to-image'
+    | '/tools/protect-pdf'
     | '/tools/rotate-pdf'
     | '/tools/split-pdf'
+    | '/tools/unlock-pdf'
+    | '/tools/watermark-pdf'
     | '/tools/'
   fileRoutesById: FileRoutesById
 }
@@ -152,11 +224,17 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
   ToolsCompressPdfRoute: typeof ToolsCompressPdfRoute
+  ToolsDeletePagesRoute: typeof ToolsDeletePagesRoute
+  ToolsExtractPagesRoute: typeof ToolsExtractPagesRoute
   ToolsImageToPdfRoute: typeof ToolsImageToPdfRoute
   ToolsMergePdfRoute: typeof ToolsMergePdfRoute
+  ToolsOrganizePdfRoute: typeof ToolsOrganizePdfRoute
   ToolsPdfToImageRoute: typeof ToolsPdfToImageRoute
+  ToolsProtectPdfRoute: typeof ToolsProtectPdfRoute
   ToolsRotatePdfRoute: typeof ToolsRotatePdfRoute
   ToolsSplitPdfRoute: typeof ToolsSplitPdfRoute
+  ToolsUnlockPdfRoute: typeof ToolsUnlockPdfRoute
+  ToolsWatermarkPdfRoute: typeof ToolsWatermarkPdfRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -183,6 +261,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/watermark-pdf': {
+      id: '/tools/watermark-pdf'
+      path: '/tools/watermark-pdf'
+      fullPath: '/tools/watermark-pdf'
+      preLoaderRoute: typeof ToolsWatermarkPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/unlock-pdf': {
+      id: '/tools/unlock-pdf'
+      path: '/tools/unlock-pdf'
+      fullPath: '/tools/unlock-pdf'
+      preLoaderRoute: typeof ToolsUnlockPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/split-pdf': {
       id: '/tools/split-pdf'
       path: '/tools/split-pdf'
@@ -197,11 +289,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsRotatePdfRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/protect-pdf': {
+      id: '/tools/protect-pdf'
+      path: '/tools/protect-pdf'
+      fullPath: '/tools/protect-pdf'
+      preLoaderRoute: typeof ToolsProtectPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/pdf-to-image': {
       id: '/tools/pdf-to-image'
       path: '/tools/pdf-to-image'
       fullPath: '/tools/pdf-to-image'
       preLoaderRoute: typeof ToolsPdfToImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/organize-pdf': {
+      id: '/tools/organize-pdf'
+      path: '/tools/organize-pdf'
+      fullPath: '/tools/organize-pdf'
+      preLoaderRoute: typeof ToolsOrganizePdfRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/merge-pdf': {
@@ -216,6 +322,20 @@ declare module '@tanstack/react-router' {
       path: '/tools/image-to-pdf'
       fullPath: '/tools/image-to-pdf'
       preLoaderRoute: typeof ToolsImageToPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/extract-pages': {
+      id: '/tools/extract-pages'
+      path: '/tools/extract-pages'
+      fullPath: '/tools/extract-pages'
+      preLoaderRoute: typeof ToolsExtractPagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/delete-pages': {
+      id: '/tools/delete-pages'
+      path: '/tools/delete-pages'
+      fullPath: '/tools/delete-pages'
+      preLoaderRoute: typeof ToolsDeletePagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/compress-pdf': {
@@ -240,11 +360,17 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ToolsSlugRoute: ToolsSlugRoute,
   ToolsCompressPdfRoute: ToolsCompressPdfRoute,
+  ToolsDeletePagesRoute: ToolsDeletePagesRoute,
+  ToolsExtractPagesRoute: ToolsExtractPagesRoute,
   ToolsImageToPdfRoute: ToolsImageToPdfRoute,
   ToolsMergePdfRoute: ToolsMergePdfRoute,
+  ToolsOrganizePdfRoute: ToolsOrganizePdfRoute,
   ToolsPdfToImageRoute: ToolsPdfToImageRoute,
+  ToolsProtectPdfRoute: ToolsProtectPdfRoute,
   ToolsRotatePdfRoute: ToolsRotatePdfRoute,
   ToolsSplitPdfRoute: ToolsSplitPdfRoute,
+  ToolsUnlockPdfRoute: ToolsUnlockPdfRoute,
+  ToolsWatermarkPdfRoute: ToolsWatermarkPdfRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
