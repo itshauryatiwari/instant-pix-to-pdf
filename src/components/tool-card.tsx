@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import type { Tool } from "@/lib/tools";
 
@@ -6,9 +5,8 @@ export function ToolCard({ tool }: { tool: Tool }) {
   const Icon = tool.icon;
   const badge = tool.available ? "Available" : "Coming soon";
   return (
-    <Link
-      to={`/tools/$slug` as any}
-      params={{ slug: tool.slug }}
+    <a
+      href={`/tools/${tool.slug}`}
       aria-label={`${tool.title} — ${tool.description}`}
       className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
