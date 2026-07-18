@@ -17,6 +17,7 @@ import { Route as ToolsRotatePdfRouteImport } from './routes/tools.rotate-pdf'
 import { Route as ToolsPdfToImageRouteImport } from './routes/tools.pdf-to-image'
 import { Route as ToolsMergePdfRouteImport } from './routes/tools.merge-pdf'
 import { Route as ToolsImageToPdfRouteImport } from './routes/tools.image-to-pdf'
+import { Route as ToolsDeletePagesRouteImport } from './routes/tools.delete-pages'
 import { Route as ToolsCompressPdfRouteImport } from './routes/tools.compress-pdf'
 import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
@@ -60,6 +61,11 @@ const ToolsImageToPdfRoute = ToolsImageToPdfRouteImport.update({
   path: '/tools/image-to-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsDeletePagesRoute = ToolsDeletePagesRouteImport.update({
+  id: '/tools/delete-pages',
+  path: '/tools/delete-pages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsCompressPdfRoute = ToolsCompressPdfRouteImport.update({
   id: '/tools/compress-pdf',
   path: '/tools/compress-pdf',
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/compress-pdf': typeof ToolsCompressPdfRoute
+  '/tools/delete-pages': typeof ToolsDeletePagesRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
     | '/tools/pdf-to-image'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
     | '/tools/pdf-to-image'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/compress-pdf'
+    | '/tools/delete-pages'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
     | '/tools/pdf-to-image'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
   ToolsCompressPdfRoute: typeof ToolsCompressPdfRoute
+  ToolsDeletePagesRoute: typeof ToolsDeletePagesRoute
   ToolsImageToPdfRoute: typeof ToolsImageToPdfRoute
   ToolsMergePdfRoute: typeof ToolsMergePdfRoute
   ToolsPdfToImageRoute: typeof ToolsPdfToImageRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsImageToPdfRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/delete-pages': {
+      id: '/tools/delete-pages'
+      path: '/tools/delete-pages'
+      fullPath: '/tools/delete-pages'
+      preLoaderRoute: typeof ToolsDeletePagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/compress-pdf': {
       id: '/tools/compress-pdf'
       path: '/tools/compress-pdf'
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ToolsSlugRoute: ToolsSlugRoute,
   ToolsCompressPdfRoute: ToolsCompressPdfRoute,
+  ToolsDeletePagesRoute: ToolsDeletePagesRoute,
   ToolsImageToPdfRoute: ToolsImageToPdfRoute,
   ToolsMergePdfRoute: ToolsMergePdfRoute,
   ToolsPdfToImageRoute: ToolsPdfToImageRoute,
