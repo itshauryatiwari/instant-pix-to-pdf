@@ -65,7 +65,6 @@ export const TOOLS: Tool[] = [
   { slug: "ocr-pdf", title: "OCR PDF", description: "Recognize text in scanned PDFs and images.", icon: ScanText },
   { slug: "extract-text", title: "Extract Text", description: "Pull all text out of a PDF as plain text.", icon: ListOrdered },
   { slug: "pdf-viewer", title: "PDF Viewer", description: "Open and read any PDF right in your browser.", icon: Eye },
-  { slug: "crop-pdf", title: "Crop PDF", description: "Trim white margins or crop pages to a fixed size.", icon: Crop },
 
 ];
 
