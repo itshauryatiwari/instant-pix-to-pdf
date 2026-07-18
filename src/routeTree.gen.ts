@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsImageToPdfRouteImport } from './routes/tools.image-to-pdf'
 import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -29,6 +30,11 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsImageToPdfRoute = ToolsImageToPdfRouteImport.update({
+  id: '/tools/image-to-pdf',
+  path: '/tools/image-to-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsSlugRoute = ToolsSlugRouteImport.update({
   id: '/tools/$slug',
   path: '/tools/$slug',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/tools/$slug' | '/tools/'
+  fullPaths:
+    | '/'
+    | '/privacy'
+    | '/tools/$slug'
+    | '/tools/image-to-pdf'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/tools/$slug' | '/tools'
-  id: '__root__' | '/' | '/privacy' | '/tools/$slug' | '/tools/'
+  to: '/' | '/privacy' | '/tools/$slug' | '/tools/image-to-pdf' | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/privacy'
+    | '/tools/$slug'
+    | '/tools/image-to-pdf'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrivacyRoute: typeof PrivacyRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
+  ToolsImageToPdfRoute: typeof ToolsImageToPdfRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -92,6 +113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/image-to-pdf': {
+      id: '/tools/image-to-pdf'
+      path: '/tools/image-to-pdf'
+      fullPath: '/tools/image-to-pdf'
+      preLoaderRoute: typeof ToolsImageToPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/$slug': {
       id: '/tools/$slug'
       path: '/tools/$slug'
@@ -106,6 +134,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyRoute: PrivacyRoute,
   ToolsSlugRoute: ToolsSlugRoute,
+  ToolsImageToPdfRoute: ToolsImageToPdfRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
