@@ -12,8 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsSplitPdfRouteImport } from './routes/tools.split-pdf'
+import { Route as ToolsRotatePdfRouteImport } from './routes/tools.rotate-pdf'
+import { Route as ToolsPdfToImageRouteImport } from './routes/tools.pdf-to-image'
 import { Route as ToolsMergePdfRouteImport } from './routes/tools.merge-pdf'
 import { Route as ToolsImageToPdfRouteImport } from './routes/tools.image-to-pdf'
+import { Route as ToolsCompressPdfRouteImport } from './routes/tools.compress-pdf'
 import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -31,6 +35,21 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsSplitPdfRoute = ToolsSplitPdfRouteImport.update({
+  id: '/tools/split-pdf',
+  path: '/tools/split-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRotatePdfRoute = ToolsRotatePdfRouteImport.update({
+  id: '/tools/rotate-pdf',
+  path: '/tools/rotate-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsPdfToImageRoute = ToolsPdfToImageRouteImport.update({
+  id: '/tools/pdf-to-image',
+  path: '/tools/pdf-to-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsMergePdfRoute = ToolsMergePdfRouteImport.update({
   id: '/tools/merge-pdf',
   path: '/tools/merge-pdf',
@@ -39,6 +58,11 @@ const ToolsMergePdfRoute = ToolsMergePdfRouteImport.update({
 const ToolsImageToPdfRoute = ToolsImageToPdfRouteImport.update({
   id: '/tools/image-to-pdf',
   path: '/tools/image-to-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsCompressPdfRoute = ToolsCompressPdfRouteImport.update({
+  id: '/tools/compress-pdf',
+  path: '/tools/compress-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsSlugRoute = ToolsSlugRouteImport.update({
@@ -51,16 +75,24 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/compress-pdf': typeof ToolsCompressPdfRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
+  '/tools/split-pdf': typeof ToolsSplitPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/compress-pdf': typeof ToolsCompressPdfRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
+  '/tools/split-pdf': typeof ToolsSplitPdfRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
@@ -68,8 +100,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/compress-pdf': typeof ToolsCompressPdfRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
   '/tools/merge-pdf': typeof ToolsMergePdfRoute
+  '/tools/pdf-to-image': typeof ToolsPdfToImageRoute
+  '/tools/rotate-pdf': typeof ToolsRotatePdfRoute
+  '/tools/split-pdf': typeof ToolsSplitPdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
@@ -78,24 +114,36 @@ export interface FileRouteTypes {
     | '/'
     | '/privacy'
     | '/tools/$slug'
+    | '/tools/compress-pdf'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/pdf-to-image'
+    | '/tools/rotate-pdf'
+    | '/tools/split-pdf'
     | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/privacy'
     | '/tools/$slug'
+    | '/tools/compress-pdf'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/pdf-to-image'
+    | '/tools/rotate-pdf'
+    | '/tools/split-pdf'
     | '/tools'
   id:
     | '__root__'
     | '/'
     | '/privacy'
     | '/tools/$slug'
+    | '/tools/compress-pdf'
     | '/tools/image-to-pdf'
     | '/tools/merge-pdf'
+    | '/tools/pdf-to-image'
+    | '/tools/rotate-pdf'
+    | '/tools/split-pdf'
     | '/tools/'
   fileRoutesById: FileRoutesById
 }
@@ -103,8 +151,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrivacyRoute: typeof PrivacyRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
+  ToolsCompressPdfRoute: typeof ToolsCompressPdfRoute
   ToolsImageToPdfRoute: typeof ToolsImageToPdfRoute
   ToolsMergePdfRoute: typeof ToolsMergePdfRoute
+  ToolsPdfToImageRoute: typeof ToolsPdfToImageRoute
+  ToolsRotatePdfRoute: typeof ToolsRotatePdfRoute
+  ToolsSplitPdfRoute: typeof ToolsSplitPdfRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -131,6 +183,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/split-pdf': {
+      id: '/tools/split-pdf'
+      path: '/tools/split-pdf'
+      fullPath: '/tools/split-pdf'
+      preLoaderRoute: typeof ToolsSplitPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/rotate-pdf': {
+      id: '/tools/rotate-pdf'
+      path: '/tools/rotate-pdf'
+      fullPath: '/tools/rotate-pdf'
+      preLoaderRoute: typeof ToolsRotatePdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/pdf-to-image': {
+      id: '/tools/pdf-to-image'
+      path: '/tools/pdf-to-image'
+      fullPath: '/tools/pdf-to-image'
+      preLoaderRoute: typeof ToolsPdfToImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/merge-pdf': {
       id: '/tools/merge-pdf'
       path: '/tools/merge-pdf'
@@ -143,6 +216,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/image-to-pdf'
       fullPath: '/tools/image-to-pdf'
       preLoaderRoute: typeof ToolsImageToPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/compress-pdf': {
+      id: '/tools/compress-pdf'
+      path: '/tools/compress-pdf'
+      fullPath: '/tools/compress-pdf'
+      preLoaderRoute: typeof ToolsCompressPdfRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/$slug': {
@@ -159,8 +239,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyRoute: PrivacyRoute,
   ToolsSlugRoute: ToolsSlugRoute,
+  ToolsCompressPdfRoute: ToolsCompressPdfRoute,
   ToolsImageToPdfRoute: ToolsImageToPdfRoute,
   ToolsMergePdfRoute: ToolsMergePdfRoute,
+  ToolsPdfToImageRoute: ToolsPdfToImageRoute,
+  ToolsRotatePdfRoute: ToolsRotatePdfRoute,
+  ToolsSplitPdfRoute: ToolsSplitPdfRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
