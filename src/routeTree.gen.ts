@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsMergePdfRouteImport } from './routes/tools.merge-pdf'
 import { Route as ToolsImageToPdfRouteImport } from './routes/tools.image-to-pdf'
 import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
@@ -30,6 +31,11 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsMergePdfRoute = ToolsMergePdfRouteImport.update({
+  id: '/tools/merge-pdf',
+  path: '/tools/merge-pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsImageToPdfRoute = ToolsImageToPdfRouteImport.update({
   id: '/tools/image-to-pdf',
   path: '/tools/image-to-pdf',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
+  '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
+  '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/image-to-pdf': typeof ToolsImageToPdfRoute
+  '/tools/merge-pdf': typeof ToolsMergePdfRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
@@ -70,15 +79,23 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/tools/$slug'
     | '/tools/image-to-pdf'
+    | '/tools/merge-pdf'
     | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/tools/$slug' | '/tools/image-to-pdf' | '/tools'
+  to:
+    | '/'
+    | '/privacy'
+    | '/tools/$slug'
+    | '/tools/image-to-pdf'
+    | '/tools/merge-pdf'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/privacy'
     | '/tools/$slug'
     | '/tools/image-to-pdf'
+    | '/tools/merge-pdf'
     | '/tools/'
   fileRoutesById: FileRoutesById
 }
@@ -87,6 +104,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
   ToolsImageToPdfRoute: typeof ToolsImageToPdfRoute
+  ToolsMergePdfRoute: typeof ToolsMergePdfRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -113,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/merge-pdf': {
+      id: '/tools/merge-pdf'
+      path: '/tools/merge-pdf'
+      fullPath: '/tools/merge-pdf'
+      preLoaderRoute: typeof ToolsMergePdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/image-to-pdf': {
       id: '/tools/image-to-pdf'
       path: '/tools/image-to-pdf'
@@ -135,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ToolsSlugRoute: ToolsSlugRoute,
   ToolsImageToPdfRoute: ToolsImageToPdfRoute,
+  ToolsMergePdfRoute: ToolsMergePdfRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
